@@ -16,7 +16,7 @@ public class ServiceGenerator {
 
     private static MovieApi movieApi = retrofit.create(MovieApi.class);
 
-//    public static MovieApi getRecipeApi(){
-//        return recipeApi;
-//    }
+    public static MovieApi getMovieApi(){
+        return movieApi;
+    }
 }

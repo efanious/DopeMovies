@@ -9,12 +9,17 @@ public class Movie implements Parcelable {
     private String original_language;
     private String overview;
     private String homepage;
+    private int id;
 
-    public Movie(String original_title, String original_language, String overview, String homepage) {
+    public Movie(String original_title, String original_language, String overview, String homepage, int id) {
         this.original_title = original_title;
         this.original_language = original_language;
         this.overview = overview;
         this.homepage = homepage;
+        this.id = id;
+    }
+
+    public Movie() {
     }
 
     protected Movie(Parcel in) {
@@ -22,6 +27,7 @@ public class Movie implements Parcelable {
         original_language = in.readString();
         overview = in.readString();
         homepage = in.readString();
+        id = in.readInt();
     }
 
     public static final Creator<Movie> CREATOR = new Creator<Movie>() {
@@ -68,7 +74,12 @@ public class Movie implements Parcelable {
         this.homepage = homepage;
     }
 
-    public Movie() {
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     @Override
@@ -78,6 +89,7 @@ public class Movie implements Parcelable {
                 ", original_language='" + original_language + '\'' +
                 ", overview='" + overview + '\'' +
                 ", homepage='" + homepage + '\'' +
+                ", id=" + id +
                 '}';
     }
 
@@ -92,5 +104,6 @@ public class Movie implements Parcelable {
         dest.writeString(original_language);
         dest.writeString(overview);
         dest.writeString(homepage);
+        dest.writeInt(id);
     }
 }
