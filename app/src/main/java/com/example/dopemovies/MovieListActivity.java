@@ -6,6 +6,8 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
 
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
 
 import com.example.dopemovies.models.Movie;
 import com.example.dopemovies.viewmodels.MovieListViewModel;
@@ -14,6 +16,7 @@ import java.util.List;
 
 public class MovieListActivity extends AppCompatActivity {
 
+    private static final String TAG = "MovieListActivity";
     private MovieListViewModel mMovieListViewModel;
 
     @Override
@@ -26,7 +29,12 @@ public class MovieListActivity extends AppCompatActivity {
 
         subscribeObservers();
 
-
+        findViewById(R.id.buttonTest).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                testRetrofitRequest();
+            }
+        });
     }
 
 
@@ -35,8 +43,23 @@ public class MovieListActivity extends AppCompatActivity {
         mMovieListViewModel.getMovies().observe(this, new Observer<List<Movie>>() {
             @Override
             public void onChanged(List<Movie> movies) {
+                if (movies != null) {
+                    for (Movie movie: movies){
+                        Log.d(TAG, "onChanged: " + movie.getOriginal_title());
+                    }
+
+                }
+
 
             }
         });
+    }
+
+    private void searchMoviesApi(String query){
+        mMovieListViewModel.searchMoviesApi(query);
+    }
+
+    private void testRetrofitRequest(){
+        searchMoviesApi("Thor");
     }
 }

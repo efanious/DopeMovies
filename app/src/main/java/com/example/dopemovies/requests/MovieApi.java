@@ -12,8 +12,8 @@ public interface MovieApi {
     //SEARCH
     @GET("3/search/movie?")
     Call<MovieSearchResponse> searchMovie(
-        @Query("api_key") String key,
-        @Query("query") String query
+            @Query("api_key") String key,
+            @Query("query") String query
 
     );
 
@@ -22,7 +22,7 @@ public interface MovieApi {
     @GET("3/movie/")
     Call<MovieResponse> getMovie(
             @Query("api_key") String key,
-            @Query("movie_id") String movie_id
+            @Query("movie_id") int movie_id
 
     );
 
