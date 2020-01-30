@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.View;
 
 import com.example.dopemovies.models.Movie;
+import com.example.dopemovies.util.Testing;
 import com.example.dopemovies.viewmodels.MovieListViewModel;
 
 import java.util.List;
@@ -44,9 +45,7 @@ public class MovieListActivity extends AppCompatActivity {
             @Override
             public void onChanged(List<Movie> movies) {
                 if (movies != null) {
-                    for (Movie movie: movies){
-                        Log.d(TAG, "onChanged: " + movie.getOriginal_title());
-                    }
+                    Testing.printMovies(movies, "Movies test");
 
                 }
 
