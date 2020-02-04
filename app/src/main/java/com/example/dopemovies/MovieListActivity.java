@@ -3,6 +3,7 @@ package com.example.dopemovies;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -56,9 +57,18 @@ public class MovieListActivity extends AppCompatActivity implements OnMovieListe
     }
 
     private void initRecyclerView(){
+//        mMovieRecyclerAdapter = new MovieRecyclerAdapter(this);
+//        mRecyclerView.setAdapter(mMovieRecyclerAdapter);
+//        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+//
+
         mMovieRecyclerAdapter = new MovieRecyclerAdapter(this);
         mRecyclerView.setAdapter(mMovieRecyclerAdapter);
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(getApplicationContext(),2);
+        mRecyclerView.setLayoutManager(gridLayoutManager); // set LayoutManager to RecyclerView
+
+
+
     }
 
     private void searchMoviesApi(String query){

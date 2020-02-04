@@ -3,19 +3,30 @@ package com.example.dopemovies.models;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import java.net.URI;
+import java.net.URL;
+
+import okhttp3.HttpUrl;
+
+import static com.example.dopemovies.util.Constants.BASE_IMAGE_URL;
+
 public class Movie implements Parcelable {
 
     private String original_title;
     private String original_language;
     private String overview;
     private String homepage;
+    private String poster_path;
+    private String backdrop_path;
     private int id;
 
-    public Movie(String original_title, String original_language, String overview, String homepage, int id) {
+    public Movie(String original_title, String original_language, String overview, String homepage, String poster_path, String backdrop_path, int id) {
         this.original_title = original_title;
         this.original_language = original_language;
         this.overview = overview;
         this.homepage = homepage;
+        this.poster_path = poster_path;
+        this.backdrop_path = backdrop_path;
         this.id = id;
     }
 
@@ -27,6 +38,8 @@ public class Movie implements Parcelable {
         original_language = in.readString();
         overview = in.readString();
         homepage = in.readString();
+        poster_path = in.readString();
+        backdrop_path = in.readString();
         id = in.readInt();
     }
 
@@ -74,6 +87,23 @@ public class Movie implements Parcelable {
         this.homepage = homepage;
     }
 
+    public String getPoster_path() {
+        return poster_path;
+    }
+
+    public void setPoster_path(String poster_path) {
+
+        this.poster_path = poster_path;
+    }
+
+    public String getBackdrop_path() {
+        return backdrop_path;
+    }
+
+    public void setBackdrop_path(String backdrop_path) {
+        this.backdrop_path = backdrop_path;
+    }
+
     public int getId() {
         return id;
     }
@@ -89,6 +119,8 @@ public class Movie implements Parcelable {
                 ", original_language='" + original_language + '\'' +
                 ", overview='" + overview + '\'' +
                 ", homepage='" + homepage + '\'' +
+                ", poster_path='" + poster_path + '\'' +
+                ", backdrop_path='" + backdrop_path + '\'' +
                 ", id=" + id +
                 '}';
     }
@@ -104,6 +136,8 @@ public class Movie implements Parcelable {
         dest.writeString(original_language);
         dest.writeString(overview);
         dest.writeString(homepage);
+        dest.writeString(poster_path);
+        dest.writeString(backdrop_path);
         dest.writeInt(id);
     }
 }

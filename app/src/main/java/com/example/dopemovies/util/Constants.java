@@ -10,6 +10,6 @@ public class Constants {
 
     //Image URL
     //Example : https://image.tmdb.org/t/p/w500/8uO0gUM8aNqYLs1OsTBQiXu0fEv.jpg
-    public static final String BASE_IMAGE_URL = "https://image.tmdb.org/t/p/w500/";
+    public static final String BASE_IMAGE_URL = "https://image.tmdb.org/t/p/";
 
 }
