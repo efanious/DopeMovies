@@ -3,12 +3,6 @@ package com.example.dopemovies.models;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import java.net.URI;
-import java.net.URL;
-
-import okhttp3.HttpUrl;
-
-import static com.example.dopemovies.util.Constants.BASE_IMAGE_URL;
 
 public class Movie implements Parcelable {
 
