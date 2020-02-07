@@ -20,7 +20,7 @@ public class MovieListViewModel extends ViewModel {
         return mMovieRepository.getMovies();
     }
 
-    public void  searchMoviesApi(String query){
+    public void searchMoviesApi(String query){
         mMovieRepository.searchMoviesApi(query);
     }
 }
