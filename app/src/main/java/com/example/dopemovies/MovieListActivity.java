@@ -1,13 +1,18 @@
 package com.example.dopemovies;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
+import androidx.appcompat.widget.Toolbar;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.os.Build;
 import android.os.Bundle;
+import android.view.Window;
+import android.view.WindowManager;
 
 import com.example.dopemovies.adapters.MovieRecyclerAdapter;
 import com.example.dopemovies.adapters.OnMovieListener;
@@ -31,11 +36,13 @@ public class MovieListActivity extends AppCompatActivity implements OnMovieListe
         mRecyclerView = findViewById(R.id.movie_list);
 
 
+
         mMovieListViewModel = ViewModelProviders.of(this).get(MovieListViewModel.class);
 
         initRecyclerView();
         subscribeObservers();
-        testRetrofitRequest();
+//        testRetrofitRequest();
+        initSearchView();
 
 
     }
@@ -67,12 +74,30 @@ public class MovieListActivity extends AppCompatActivity implements OnMovieListe
         GridLayoutManager gridLayoutManager = new GridLayoutManager(getApplicationContext(),2);
         mRecyclerView.setLayoutManager(gridLayoutManager); // set LayoutManager to RecyclerView
 
+    }
 
+//    private void searchMoviesApi(String query){
+//        mMovieListViewModel.searchMoviesApi(query);
+//    }
+
+    private void searchMoviesApi(String query){
 
     }
 
-    private void searchMoviesApi(String query){
-        mMovieListViewModel.searchMoviesApi(query);
+    private void initSearchView(){
+        final SearchView searchView = findViewById(R.id.search_view);
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                mMovieListViewModel.searchMoviesApi(query);
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                return false;
+            }
+        });
     }
 
     private void testRetrofitRequest(){
