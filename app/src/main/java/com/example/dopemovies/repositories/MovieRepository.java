@@ -29,7 +29,11 @@ public class MovieRepository {
         return mMovieApiClient.getMovies()  ;
     }
 
-    public void  searchMoviesApi(String query){
+    public void searchMoviesApi(String query){
         mMovieApiClient.searchMoviesApi(query);
+    }
+
+    public void popularMoviesApi(){
+        mMovieApiClient.popularMoviesApi();
     }
 }

@@ -23,4 +23,9 @@ public class MovieListViewModel extends ViewModel {
     public void searchMoviesApi(String query){
         mMovieRepository.searchMoviesApi(query);
     }
+
+    //New
+    public void popularMoviesApi(){
+        mMovieRepository.popularMoviesApi();
+    }
 }
