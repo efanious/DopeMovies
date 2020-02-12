@@ -1,10 +1,8 @@
 package com.example.dopemovies.repositories;
 
 import androidx.lifecycle.LiveData;
-import androidx.lifecycle.MutableLiveData;
 
 import com.example.dopemovies.models.Movie;
-import com.example.dopemovies.requests.MovieApi;
 import com.example.dopemovies.requests.MovieApiClient;
 
 import java.util.List;
@@ -29,8 +27,16 @@ public class MovieRepository {
         return mMovieApiClient.getMovies()  ;
     }
 
+    public LiveData<Movie> getMovie(){
+        return mMovieApiClient.getMovie()  ;
+    }
+
     public void searchMoviesApi(String query){
         mMovieApiClient.searchMoviesApi(query);
+    }
+
+    public void getMovieById(int movieId){
+        mMovieApiClient.getMovieById(movieId);
     }
 
     public void popularMoviesApi(){

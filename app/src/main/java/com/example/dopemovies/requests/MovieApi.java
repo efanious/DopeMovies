@@ -6,6 +6,7 @@ import com.example.dopemovies.requests.responses.PopularMoviesResponse;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
+import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 public interface MovieApi {
@@ -30,11 +31,12 @@ public interface MovieApi {
 
 
     //GET MOVIE REQUEST
-    @GET("3/movie/")
+    @GET("3/movie/{movie_id}?")
     Call<MovieResponse> getMovie(
-            @Query("api_key") String key,
-            @Query("movie_id") int movie_id
+            @Path("movie_id") int movie_id,
+            @Query("api_key") String key
 
     );
+
 
 }
